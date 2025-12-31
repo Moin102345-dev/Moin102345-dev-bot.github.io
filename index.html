@@ -93,12 +93,12 @@ footer { text-align:center; padding:30px 20px; background:var(--bg2); color:#94a
   <p>Powerful moderation, tickets, reaction roles, automod, announcements and premium features – built for modern Discord servers.</p>
 
   <div class="button-group">
-    <a id="inviteBtn" class="invite-btn" href="https://discord.com/oauth2/authorize?client_id=1370876070319882421&permissions=8&integration_type=0&scope=bot" target="_blank">🤖 Invite Bot</a>
+    <a id="inviteBtn" class="invite-btn" href="https://discord.com/oauth2/authorize?client_id=1370876070319882421&permissions=8&scope=bot" target="_blank">🤖 Invite Bot</a>
     <a id="serverBtn" class="invite-btn server-btn" href="https://discord.gg/9DfJWYDsdp" target="_blank">💬 Join Discord Server</a>
   </div>
 </header>
 
-<div id="maintenanceWarning">⚠️ Maintenance mode active – The bot is currently not saving any data! do not use setup or redeem your premium key!</div>
+<div id="maintenanceWarning">⚠️ Maintenance mode active – The bot is currently not saving any data! Do not use setup or redeem your premium key!</div>
 
 <main id="commands">
 
@@ -186,18 +186,27 @@ footer { text-align:center; padding:30px 20px; background:var(--bg2); color:#94a
 <button id="topBtn" onclick="scrollTo({top:0,behavior:'smooth'})">⬆</button>
 
 <script>
-const BOT_STATUS = "MAINTENANCE"; // ONLINE | MAINTENANCE | OFFLINE
+const BOT_STATUS = "ONLINE"; // ONLINE | MAINTENANCE | OFFLINE
 const badge = document.getElementById("statusBadge");
 const inviteBtn = document.getElementById("inviteBtn");
 const serverBtn = document.getElementById("serverBtn");
 const warn = document.getElementById("maintenanceWarning");
 
-if(BOT_STATUS==="ONLINE"){ badge.textContent="ONLINE"; badge.className="badge online"; }
-else if(BOT_STATUS==="MAINTENANCE"){
-  badge.textContent="MAINTENANCE"; badge.className="badge maintenance";
-  inviteBtn.classList.add("disabled"); serverBtn.classList.add("disabled"); warn.style.display="block";
+// Status-Logik: Server-Button bleibt aktiv während Maintenance
+if(BOT_STATUS==="ONLINE"){ 
+    badge.textContent="ONLINE"; 
+    badge.className="badge online"; 
+} else if(BOT_STATUS==="MAINTENANCE"){
+    badge.textContent="MAINTENANCE"; 
+    badge.className="badge maintenance";
+    inviteBtn.classList.add("disabled"); 
+    serverBtn.classList.remove("disabled"); // Discord Server beitreten bleibt möglich
+    warn.style.display="block";
 } else {
-  badge.textContent="OFFLINE"; badge.className="badge offline"; inviteBtn.classList.add("disabled"); serverBtn.classList.add("disabled");
+    badge.textContent="OFFLINE"; 
+    badge.className="badge offline"; 
+    inviteBtn.classList.add("disabled"); 
+    serverBtn.classList.add("disabled");
 }
 
 // Copy-to-Clipboard
@@ -225,5 +234,3 @@ window.onscroll = ()=>document.getElementById("topBtn").style.display = window.s
 
 </body>
 </html>
-
-
