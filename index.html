@@ -106,7 +106,7 @@ footer { text-align:center; padding:30px 20px; background:var(--bg2); color:#94a
     <h2>Bot Status</h2>
     <div class="status-box">
       <p>Status: <span id="statusBadge" class="badge">ONLINE</span></p>
-      <p>Version: v1.0.0</p>
+      <p>Version: v1.0.1</p>
     </div>
   </section>
 
@@ -186,7 +186,7 @@ footer { text-align:center; padding:30px 20px; background:var(--bg2); color:#94a
 <button id="topBtn" onclick="scrollTo({top:0,behavior:'smooth'})">⬆</button>
 
 <script>
-const BOT_STATUS = "MAINTENANCE"; // ONLINE | MAINTENANCE | OFFLINE
+const BOT_STATUS = "ONLINE"; // ONLINE | MAINTENANCE | OFFLINE
 const badge = document.getElementById("statusBadge");
 const inviteBtn = document.getElementById("inviteBtn");
 const serverBtn = document.getElementById("serverBtn");
@@ -234,4 +234,5 @@ window.onscroll = ()=>document.getElementById("topBtn").style.display = window.s
 
 </body>
 </html>
+
 
